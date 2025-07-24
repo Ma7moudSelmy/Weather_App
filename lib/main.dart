@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/views/home_views.dart';
 
 void main() {
   runApp(MyWidget());
@@ -9,18 +10,6 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: const Color.fromARGB(237, 35, 188, 235),
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text(
-            'Weather App',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-        ),
-      ),
-    );
+    return HomeViews();
   }
 }
