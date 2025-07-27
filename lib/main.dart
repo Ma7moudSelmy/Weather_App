@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/views/home_views.dart';
+import 'package:weather_app/views/home_views.dart'; // تأكد من مسار الاستيراد
 
 void main() {
-  runApp(MyWidget());
+  runApp(const MyApp());
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return HomeViews();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const HomeViews(),
+    );
   }
 }
