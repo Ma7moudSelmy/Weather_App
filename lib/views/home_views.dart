@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/views/body.dart';
+import 'package:weather_app/views/NoWeatherBody.dart';
 
 class HomeViews extends StatelessWidget {
   const HomeViews({super.key});
