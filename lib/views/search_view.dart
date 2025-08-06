@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
@@ -6,20 +8,26 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search a city'),
-        backgroundColor: Colors.blue,
-      ),
+      appBar: AppBar(title: const Text('Search a city')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(
-                  color: const Color.fromARGB(255, 223, 129, 7),
-                  width: 2,
+          child: SizedBox(
+            height: 180,
+            child: TextField(
+              onSubmitted: (value) {
+                log(value);
+              },
+              decoration: InputDecoration(
+                label: const Text('Search'),
+                suffixIcon: Icon(Icons.search),
+                hintText: 'Enter city name',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(
+                    color: const Color.fromARGB(255, 223, 129, 7),
+                    width: 2,
+                  ),
                 ),
               ),
             ),

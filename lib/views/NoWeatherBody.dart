@@ -6,6 +6,8 @@ class NoWeatherBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(95, 90, 90, 90),
+
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(left: 5),
