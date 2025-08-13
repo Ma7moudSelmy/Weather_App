@@ -2,9 +2,9 @@ class WeatherModels {
   final String cityName;
   final String date;
   final String? image;
-  final String temp;
-  final String maxTemp;
-  final String minTemp;
+  final double temp;
+  final double maxTemp;
+  final double minTemp;
   final String weatherCondition;
 
   WeatherModels({
@@ -17,15 +17,17 @@ class WeatherModels {
     required this.weatherCondition,
   });
 
-  factory WeatherModels.fromJson(Map<String, dynamic> json) {
+  factory WeatherModels.fromJson(json) {
     return WeatherModels(
-      cityName: json['cityName'] ?? '',
-      date: json['date'] ?? '',
-      image: json['image'],
-      temp: json['temp'] ?? '',
-      maxTemp: json['maxTemp'] ?? '',
-      minTemp: json['minTemp'] ?? '',
-      weatherCondition: json['weatherCondition'] ?? '',
+      cityName: json["location"]["name"],
+
+      date: json['current']['last_updated'],
+      temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'],
+      maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'],
+      minTemp: json['forecast']['forecastday'][0]['day']['mintemp_c'],
+      weatherCondition:
+          json['forecast']['forecastday'][0]['day']['condition']['text'],
+      image: json['forecast']['forecastday'][0]['day']['condition']['icon'],
     );
   }
 }
