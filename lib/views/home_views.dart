@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/views/NoWeatherBody.dart';
+import 'package:weather_app/views/WeatherInfoBody.dart';
 import 'package:weather_app/views/search_view.dart';
 
-class HomeViews extends StatelessWidget {
+class HomeViews extends StatefulWidget {
   const HomeViews({super.key});
 
+  @override
+  State<HomeViews> createState() => _HomeViewsState();
+}
+
+class _HomeViewsState extends State<HomeViews> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +39,9 @@ class HomeViews extends StatelessWidget {
         ],
         backgroundColor: Colors.blue,
       ),
-      body: const NoWeatherBody(),
+      body: weatherModels == null
+          ? const NoWeatherBody()
+          : const WeatherInfoBody(),
     );
   }
 }
