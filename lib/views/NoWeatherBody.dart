@@ -5,20 +5,17 @@ class NoWeatherBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(95, 90, 90, 90),
-
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 5),
-          child: Text(
-            'There in no weather😔 start\n       searching Now🔍',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.only(left: 5),
+        child: Text(
+          'There is no weather 😔\nStart searching Now 🔍',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
     );

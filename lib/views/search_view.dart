@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/Models/Weather_models.dart';
-import 'package:weather_app/Services/Weather_services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -16,20 +15,18 @@ class SearchView extends StatelessWidget {
           child: SizedBox(
             height: 180,
             child: TextField(
-              onSubmitted: (value) async {
-                weatherModels = await WeatherServices(
-                  dio: Dio(),
-                ).getCurrentWeather(cityName: value);
+              onSubmitted: (value) {
+                context.read<GetWeatherCubit>().getWeather(cityName: value);
                 Navigator.pop(context);
               },
               decoration: InputDecoration(
                 label: const Text('Search'),
-                suffixIcon: Icon(Icons.search),
+                suffixIcon: const Icon(Icons.search),
                 hintText: 'Enter city name',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(
-                    color: const Color.fromARGB(255, 223, 129, 7),
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 223, 129, 7),
                     width: 2,
                   ),
                 ),
@@ -41,5 +38,3 @@ class SearchView extends StatelessWidget {
     );
   }
 }
-
-WeatherModels? weatherModels;
