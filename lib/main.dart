@@ -14,11 +14,34 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: MaterialApp(
-        theme: ThemeData(),
-        debugShowCheckedModeBanner: false,
-        home: HomeViews(),
-      ),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: HomeViews()),
     );
+  }
+
+  MaterialColor getThemeColor(String condition) {
+    condition = condition.toLowerCase();
+
+    if (condition.contains("sunny") || condition.contains("clear")) {
+      return Colors.orange;
+    } else if (condition.contains("partly cloudy") ||
+        condition.contains("cloudy")) {
+      return Colors.blueGrey;
+    } else if (condition.contains("overcast")) {
+      return Colors.grey;
+    } else if (condition.contains("mist") || condition.contains("fog")) {
+      return Colors.blueGrey;
+    } else if (condition.contains("rain") ||
+        condition.contains("drizzle") ||
+        condition.contains("shower")) {
+      return Colors.blue;
+    } else if (condition.contains("snow") || condition.contains("blizzard")) {
+      return Colors.lightBlue;
+    } else if (condition.contains("sleet") ||
+        condition.contains("ice pellets")) {
+      return Colors.cyan;
+    } else if (condition.contains("thunder")) {
+      return Colors.deepPurple;
+    }
+    return Colors.teal;
   }
 }
