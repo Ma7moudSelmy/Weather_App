@@ -17,18 +17,21 @@ class WeatherServices {
       );
 
       if (response.statusCode == 200) {
+        log("✅ Weather Data fetched successfully");
         return WeatherModels.fromJson(response.data);
       } else {
+        log("❌ Unexpected status code: ${response.statusCode}");
         throw Exception("Unexpected status code: ${response.statusCode}");
       }
     } on DioException catch (e) {
       final String errMessage =
-          e.response?.data["error"]["message"] ??
+          e.response?.data?["error"]?["message"] ??
           "Oops, something went wrong. Please try again later.";
-      log("DioException: $errMessage");
+
+      log("❌ DioException: $errMessage | Status: ${e.response?.statusCode}");
       throw Exception(errMessage);
     } catch (e) {
-      log("General Exception: $e");
+      log("❌ General Exception: $e");
       throw Exception("Oops, something went wrong. Please try again later.");
     }
   }

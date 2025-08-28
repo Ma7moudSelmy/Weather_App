@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         home: HomeViews(),
       ),
